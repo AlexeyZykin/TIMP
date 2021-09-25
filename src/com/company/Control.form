@@ -1,39 +1,208 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.company.Control">
-  <grid id="c0d1f" binding="mainField" layout-manager="GridLayoutManager" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-    <margin top="0" left="0" bottom="0" right="0"/>
+  <grid id="c0d1f" binding="mainField" layout-manager="BorderLayout" hgap="0" vgap="0">
     <constraints>
-      <xy x="216" y="239" width="547" height="481"/>
+      <xy x="154" y="64" width="595" height="494"/>
     </constraints>
     <properties>
-      <background color="-10515614"/>
+      <background color="-1"/>
       <enabled value="true"/>
       <foreground color="-1"/>
+      <inheritsPopupMenu value="false"/>
+      <maximumSize width="50" height="50"/>
+      <minimumSize width="50" height="50"/>
+      <opaque value="false"/>
+      <preferredSize width="1000" height="800"/>
     </properties>
     <border type="none"/>
     <children>
-      <component id="66b0" class="javax.swing.JLabel" binding="info">
-        <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
+      <grid id="38b83" binding="ControlPanel" layout-manager="GridLayoutManager" row-count="19" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="0">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints border-constraint="East"/>
         <properties>
-          <text value="Счетчик машин"/>
+          <background color="-4473925"/>
+          <enabled value="true"/>
+          <focusCycleRoot value="false"/>
+          <focusTraversalPolicyProvider value="false"/>
+          <foreground color="-13421773"/>
+          <minimumSize width="350" height="100"/>
+          <opaque value="true"/>
+          <preferredSize width="350" height="100"/>
+          <requestFocusEnabled value="false"/>
         </properties>
-      </component>
-      <component id="d5059" class="javax.swing.JLabel" binding="timerLabel">
-        <constraints>
-          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <background color="-1"/>
-          <text value="Секундомер"/>
-        </properties>
-      </component>
-      <vspacer id="133d0">
-        <constraints>
-          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-        </constraints>
-      </vspacer>
+        <border type="none"/>
+        <children>
+          <component id="78c0" class="javax.swing.JLabel" binding="timerLabel">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-13421773"/>
+              <font name="Arial" size="14"/>
+              <foreground color="-14474461"/>
+              <text value="Время работы программы: "/>
+            </properties>
+          </component>
+          <component id="7861b" class="javax.swing.JButton" binding="Stop">
+            <constraints>
+              <grid row="18" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false">
+                <minimum-size width="-1" height="30"/>
+              </grid>
+            </constraints>
+            <properties>
+              <focusPainted value="true"/>
+              <text value="Стоп"/>
+            </properties>
+          </component>
+          <component id="717d4" class="javax.swing.JButton" binding="Start">
+            <constraints>
+              <grid row="17" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="2" fill="1" indent="0" use-parent-layout="false">
+                <minimum-size width="-1" height="30"/>
+              </grid>
+            </constraints>
+            <properties>
+              <name value=""/>
+              <opaque value="true"/>
+              <text value="Старт"/>
+            </properties>
+          </component>
+          <component id="a32ff" class="javax.swing.JRadioButton" binding="timeHidden">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Скрывать время симуляции"/>
+            </properties>
+          </component>
+          <component id="66562" class="javax.swing.JCheckBox" binding="GetInfo">
+            <constraints>
+              <grid row="16" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Показать информацию"/>
+            </properties>
+          </component>
+          <component id="73132" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="3" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="10" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <foreground color="-13421773"/>
+              <text value="Период. Грузовая машина"/>
+            </properties>
+          </component>
+          <component id="eee07" class="javax.swing.JTextField" binding="CargoTimeSpawn">
+            <constraints>
+              <grid row="4" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="9" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="4b1fd" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="7" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="10" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <foreground color="-13421773"/>
+              <text value="Вероятность. Грузовая машина"/>
+            </properties>
+          </component>
+          <component id="fade6" class="javax.swing.JComboBox" binding="CargoProbability">
+            <constraints>
+              <grid row="8" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="9" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="49f68" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="9" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="10" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <foreground color="-13421773"/>
+              <text value="Вероятность. Легковая машина"/>
+            </properties>
+          </component>
+          <component id="696d8" class="javax.swing.JComboBox" binding="PassengerProbability">
+            <constraints>
+              <grid row="10" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="9" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="13cf4" class="javax.swing.JRadioButton" binding="timeVisible">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="10" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Показывать время симуляции"/>
+            </properties>
+          </component>
+          <component id="fb68a" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="5" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="10" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <foreground color="-13421773"/>
+              <text value="Период. Легковая машина"/>
+            </properties>
+          </component>
+          <component id="775e6" class="javax.swing.JTextField" binding="PassengerTimeSpawn">
+            <constraints>
+              <grid row="6" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="9" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="dab20" class="javax.swing.JTextField" binding="TimeLiveCargo">
+            <constraints>
+              <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="9" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="30"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="d76c7" class="javax.swing.JTextField" binding="TimeLivePassenger">
+            <constraints>
+              <grid row="14" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="9" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="425af" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="11" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="10" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <foreground color="-14474461"/>
+              <text value="Время жизни грузовой машины"/>
+            </properties>
+          </component>
+          <component id="de1c" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="13" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="10" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <foreground color="-14474461"/>
+              <text value="Время жизни легковой машины"/>
+            </properties>
+          </component>
+          <component id="87ec8" class="javax.swing.JButton" binding="currentObjects">
+            <constraints>
+              <grid row="15" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Текущие объекты"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
     </children>
   </grid>
+  <buttonGroups>
+    <group name="ShowTimer">
+      <member id="13cf4"/>
+      <member id="a32ff"/>
+    </group>
+  </buttonGroups>
+  <inspectionSuppressions>
+    <suppress inspection="NoButtonGroup" id="a32ff"/>
+  </inspectionSuppressions>
 </form>

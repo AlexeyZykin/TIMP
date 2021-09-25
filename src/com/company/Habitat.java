@@ -1,10 +1,10 @@
 package com.company;
 
-import com.company.Car;
-import com.company.PassengerCar;
-import com.company.CargoCar;
+import com.company.Car.Car;
+import com.company.Car.CargoCar;
+import com.company.Car.PassengerCar;
+
 import javax.swing.*;
-import java.awt.*;
 
 import javax.imageio.ImageIO;
 import java.io.File;
@@ -13,76 +13,97 @@ import java.util.ArrayList;
 
 
 public class Habitat {
-    static private ArrayList<Car> list = new ArrayList<>();
-    static Control window;
-    static CargoCar cargocar = new CargoCar();
-    static PassengerCar passengerCar = new PassengerCar();
-
-    static private int seconds = 0;
-    static private int width = 1280;
+    static DisplayPanel window;
+    static private int width = 1000;
     static private int height = 800;
     static private int N1 = 1000;
     static private int N2 = 1000;
     static private double P1 = 0.4;
     static private double P2 = 0.5;
-
     static Generation thread1;
     static Generation thread2;
 
-    Habitat(Control window) {
+    Habitat(DisplayPanel window) {
         this.window = window;
-        this.window.setSize(width, height);
     }
 
-    public static ArrayList<Car> GetList() {
-        return list;
-    }
-
-    public static void SetList(ArrayList<Car> list) {
-        Habitat.list = list;
-    }
 
     public void start() {
         //проверка на правильность пути
         try {
-            cargocar.Cargo_Car = ImageIO.read(new File("src/com/company/Picture/CargoCar.png"));
+            CargoCar.Cargo_Car = ImageIO.read(new File("src/com/company/Picture/CargoCar.png"));
             System.out.println("Изображение считалось");
         } catch (IOException e) {
             System.out.println("Ошибка! Изображение не считалось");
         }
 
         try {
-            passengerCar.Passenger_Car = ImageIO.read(new File("src/com/company/Picture/PassengerCar.png"));
+            PassengerCar.Passenger_Car = ImageIO.read(new File("src/com/company/Picture/PassengerCar.png"));
             System.out.println("Изображение считалось");
         } catch (IOException e) {
             System.out.println("Ошибка! Изображение не считалось");
         }
 
-        thread1 = new Generation(window, cargocar, N1, P1, list);
-        thread2 = new Generation(window, passengerCar, N2, P2, list);
+        thread1 = new Generation(window, CargoCar.getStaticName(), N1, P1);
+        thread2 = new Generation(window, PassengerCar.getStaticName(), N2, P2);
         thread1.start();
         thread2.start();
     }
 
-    public void Respawn() {
-        try {
-            thread1.sleep(100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        int i = 0;
-        while (i < list.size()) {
-            list.get(i).RespawnCar(window);
-            i++;
+    public void respawn(TypeCar typeCar) {
+        if(Control.list.size()!=0) {
+            boolean OBJFound = false;
+            int i = 0;
+            if (typeCar == TypeCar.Cargo) {//удалает первый элемент переданного типа и отрисовывает все остальные объекты и всех вспомагательных данных
+                while (i < Control.list.size()) {
+                    if(Control.list.get(i).getName() != CargoCar.getStaticName()){
+                        OBJFound = true;
+                        break;
+                    }
+                    i++;
+                }
+                CargoCar.amount_car--;
+            } else {
+                while (i < Control.list.size()) {
+                    if(Control.list.get(i).getName() != PassengerCar.getStaticName()){
+                        OBJFound = true;
+                        break;
+                    }
+                    i++;
+                }
+                PassengerCar.amount_car--;
+            }
+            if(OBJFound == true) {
+                Control.idList.remove(Control.list.get(i).getId());
+                Control.BornList.remove(Control.list.get(i).getId());
+                Control.list.remove(i);
+                window.repaint();
+            }
         }
     }
 
     public static void stop() {
-        if (thread1 != null) thread1.interrupt();
-        if (thread2 != null) thread2.interrupt();
+        if(thread1 != null) thread1.stopThread();
+        if(thread2 != null) thread2.stopThread();
+        for(int i = 0; i < Control.list.size(); i++){
+            if(Control.list.get(i).getName() == CargoCar.getStaticName())
+                CargoCar.amount_car--;
+            else{
+                PassengerCar.amount_car--;
+            }
+
+        }
+        Control.list.clear();
     }
 
-    public int update() {
-        return seconds++;
+
+    public void ChangeProperties(double P1, int N1, double P2, int N2){
+        if(N1 == 0)N1 = 1000;
+        if(N2 == 0)N2 = 1000;
+
+        Habitat.N1 = N1;
+        Habitat.P1 = P1;
+        Habitat.N2 = N2;
+        Habitat.P2 = P2;
     }
 }
